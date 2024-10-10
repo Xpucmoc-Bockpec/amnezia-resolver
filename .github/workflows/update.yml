@@ -26,7 +26,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: amnezia-tunnel-split-config
-          path: ./output/output.json
+          path: ./output/amnezia_sites.json
 
       - name: Create release
         id: create_release
@@ -45,6 +45,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./output/output.json
+          asset_path: ./output/amnezia_sites.json
           asset_name: amnezia_sites.json
           asset_content_type: application/json
