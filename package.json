@@ -1,0 +1,17 @@
+{
+  "name": "amnezia-resolver",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/resolver.js",
+    "test": "echo \"какие тесты брат все работает\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "porro": "^2.2.0"
+  }
+}
