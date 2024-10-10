@@ -1,28 +1,29 @@
 name: 'Update lists'
 on:
   schedule:
-  - cron: '0 1 * * *'
+    - cron: '0 1 * * *'
+  workflow_dispatch:
 
 jobs:
   update:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '22'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
-    - name: Install dependencies
-      run: npm ci
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Run resolver
-      run: npm run start
+      - name: Run resolver
+        run: npm run start
 
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: amnezia-tunnel-split-config
-        path: ./output/output.json
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: amnezia-tunnel-split-config
+          path: ./output/output.json
