@@ -1,11 +1,13 @@
-name: 'Update lists'
+name: 'Resolve lists and release'
 on:
   schedule:
     - cron: '0 1 * * *'
   workflow_dispatch:
+  push:
 
 jobs:
   update:
+    name: Resolve lists and release
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
