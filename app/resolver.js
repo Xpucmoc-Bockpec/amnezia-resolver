@@ -1,30 +1,18 @@
-import { readSourceList } from './utils/read-source-list.js';
-import { readHostnamesFromUrl } from './utils/read-hostnames-from-url.js';
-import { resolveHostnames } from './utils/resolve-hostnames.js';
-import { saveOutput } from './utils/save-output.js';
+import { generateAmneziaConfig } from './services/generate-amnezia-config.js';
+import { fetchDomainsFromUrl, readFile } from './services/domain-fetcher.js';
 
+const domains = [
+  ...readFile('domains'),
+];
 
-const output = [];
+const sources = readFile('custom-sources');
 
-const hostnames = readSourceList('domains');
+for (const source of sources) {
+  const domainsFromSource = await fetchDomainsFromUrl(source);
 
-const resolvedIPs = await resolveHostnames(hostnames);
-
-console.info(`Resolved ${resolvedIPs.length} IPs of ${hostnames.length} hostnames from domains.list`);
-
-output.push(...resolvedIPs);
-
-const customSources = readSourceList('custom-sources');
-
-for (const url of customSources) {
-  const hostnames = await readHostnamesFromUrl(url);
-  const result = await resolveHostnames(hostnames);
-
-  output.push(...result);
-
-  console.info(`Resolved ${result.length} IPs of ${hostnames.length} hostnames from "${url}"`);
+  domains.push(...domainsFromSource);
 }
 
-await saveOutput(output);
+console.info(`Found ${domains.length} domains`);
 
-console.log('Done');
+generateAmneziaConfig(domains);
