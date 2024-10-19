@@ -16,7 +16,7 @@
 
 <details>
   <summary><b>Выдать cron доступ к чтению и записи на диск</b></summary>
-  <img width="947" alt="image" src="https://github.com/user-attachments/assets/17fd4f5f-6429-41cb-934a-85df197d7500">
+  <img width="947" alt="image" src="https://github.com/user-attachments/assets/20707a74-c4fc-4a5d-b4b2-95517cd5a2d1">
 
   - Нажать плюсик снизу
   - **Shift + Command + G** → `/usr/sbin/cron`
