@@ -5,7 +5,7 @@ import { resolveDNSThrottled } from './dns-resolver.js';
 
 export const generateOpenvpnConfig = async (domains) => {
   const result = new Map();
-  const outputPath = resolve(process.cwd() + `/output/openvpn.conf`);
+  const outputPath = resolve(process.cwd() + `/output/openvpn-routes.conf`);
 
   const resolvedIPs = await Promise.all(
     domains.map(domain => resolveDNSThrottled(domain))
