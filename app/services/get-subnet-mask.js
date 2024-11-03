@@ -28,5 +28,5 @@ export function getSubnetMask(ip) {
     return null;
   }
 
-  return `${parts[0]}.${parts[1]}.0.0/16`;
+  return `${parts[0]}.${parts[1]}.${parts[2]}.0/24`;
 }

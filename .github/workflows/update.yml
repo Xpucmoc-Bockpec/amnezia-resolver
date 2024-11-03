@@ -28,8 +28,8 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GH_TOKEN }}
-          file: ./output/amnezia_sites.json
-          asset_name: amnezia_sites.json
+          file: ./output/*
+          file_glob: true
           tag: latest
           overwrite: true
-          body: "hello there"
+          body: ""

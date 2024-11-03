@@ -8,7 +8,7 @@
 
   - [custom-sources.list](./data/custom-sources.list) — по прочим спискам, собираемых сообществом
 
-## Автоматическое обновление (MacOS)
+## AmneziaVPN: автоматическое обновление (MacOS)
 
 ```
 (crontab -l 2> /dev/null; echo "0 */2 * * * curl https://github.com/Xpucmoc-Bockpec/amnezia-resolver/releases/download/latest/amnezia_sites.json > ~/Documents/amnezia_sites.json") | crontab -
@@ -21,3 +21,17 @@
   - Нажать плюсик снизу
   - **Shift + Command + G** → `/usr/sbin/cron`
  </details>
+
+## Серверные конфиги OpenVPN
+
+### Добавить в `openvpn.conf`
+
+```sh
+config /etc/openvpn/routes.conf
+```
+
+### Настроить автоматическое обновление `routes.conf`
+
+```sh
+(crontab -l 2> /dev/null; echo "0 */2 * * * curl https://github.com/Xpucmoc-Bockpec/amnezia-resolver/releases/download/latest/openvpn-routes.conf > /etc/openvpn/routes.conf && systemctl restart openvpn") | crontab -
+```
