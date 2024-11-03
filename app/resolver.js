@@ -1,5 +1,6 @@
 import { generateAmneziaConfig } from './services/generate-amnezia-config.js';
 import { fetchDomainsFromUrl, readFile } from './services/domain-fetcher.js';
+import { generateOpenvpnConfig } from './services/generate-openvpn-config.js';
 
 const domains = [
   ...readFile('domains'),
@@ -16,3 +17,4 @@ for (const source of sources) {
 console.info(`Found ${domains.length} domains`);
 
 generateAmneziaConfig(domains);
+generateOpenvpnConfig(domains);
